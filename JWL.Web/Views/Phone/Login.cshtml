@@ -1,0 +1,102 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Login Page | Amaze UI Example</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/css/amui.all.min.css" rel="stylesheet" />
+    <link href="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/css/app.css" rel="stylesheet" />
+    <script src="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/js/zepto.min.js"></script>
+    <script src="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/js/amui.js"></script>
+
+    <style>
+        .header {
+            text-align: center;
+        }
+
+            .header h1 {
+                font-size: 200%;
+                color: #333;
+                margin-top: 30px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+    </style>
+</head>
+<body class="loginbg">
+    <br />
+    <br />
+    <br />
+    <div class="header">
+        <div class="am-g">
+            <h1>Web JWL</h1>
+            <p>Integrated Development Environment<br />代码编辑，代码生成，界面设计，调试，编译</p>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="am-g">
+        <div class="col-lg-6 col-md-8 col-sm-centered">
+            <div class="am-form">
+                <input type="email" name="" id="PhoneNo" placeholder="请输入您的手机号码" value="">
+                <br>
+                <input type="password" name="" id="Password" placeholder="请输入您登录密码" value="">
+                <br>
+                <br />
+                <div class="am-cf">
+                    <a id="submit" class="am-btn am-btn-primary am-btn-sm am-fr">马上登录</a>
+                    <a id="forgetpwd" class="am-btn am-btn-default am-btn-sm am-fl" data-am-modal="{target: '#my-alert'}">忘记密码? </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">Amaze UI</div>
+            <div class="am-modal-bd">
+                Hello world！
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $('#submit').click(function () {
+            var PhoneNo = $.trim($('#PhoneNo').val());
+            var Password = $.trim($('#Password').val());
+           
+
+            $.ajax({
+                url: "/Phone/Login",
+                type: "post",
+                data: {
+                    "PhoneNo": PhoneNo,
+                    "Password": Password
+                },
+                success: function (data) {
+                    if (data.res == true) {
+                        window.location.href = "/Phone"
+                    } else {
+                        alert("帐号密码不正确");
+                    }
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

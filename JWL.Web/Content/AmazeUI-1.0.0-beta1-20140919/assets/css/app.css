@@ -1,0 +1,22 @@
+/* Write your styles */
+.am-col, [class*="col-"] {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.loginbg {
+    background-color: #add8e6;
+}
+
+.form_div {
+    padding:5px;
+}
+
+    .form_div p {
+        margin:5px 0;
+        font-size:14px;
+    }
+
+    .form_div input {
+        width:100%;
+    }

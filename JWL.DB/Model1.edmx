@@ -1,0 +1,514 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="JWLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Good">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="80" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="Size" Type="float" />
+          <Property Name="SrcAddress" Type="nvarchar" MaxLength="15" />
+          <Property Name="SrcAddressDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="DestAddress" Type="nvarchar" MaxLength="15" />
+          <Property Name="DestAddressDetail" Type="nvarchar" MaxLength="100" />
+          <Property Name="SendTime" Type="datetime" />
+          <Property Name="ReachTime" Type="datetime" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <EntityType Name="Lorry">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LorryType" Type="int" />
+          <Property Name="LorryLength" Type="float" />
+          <Property Name="CarryWeight" Type="float" />
+          <Property Name="DriverId" Type="int" />
+          <Property Name="Pic" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="Html" Type="text" />
+          <Property Name="Author" Type="int" />
+          <Property Name="Pics" Type="nvarchar" MaxLength="300" />
+          <Property Name="ComeFrom" Type="nvarchar" MaxLength="50" />
+          <Property Name="ComeFromUrl" Type="varchar" MaxLength="300" />
+          <Property Name="Tags" Type="int" />
+          <Property Name="Applaud" Type="int" />
+          <Property Name="Tread" Type="int" />
+          <Property Name="Click" Type="int" />
+          <Property Name="Type" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Trend">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LorryNo" Type="varchar" MaxLength="50" />
+          <Property Name="SrcAddress" Type="varchar" MaxLength="50" />
+          <Property Name="DestAddress" Type="varchar" MaxLength="50" />
+          <Property Name="DepartureTime" Type="datetime" />
+          <Property Name="ReachTime" Type="datetime" />
+          <Property Name="GoBackTime" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
+          <Property Name="CurrentCity" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CodeName" Type="varchar" MaxLength="50" />
+          <Property Name="KeyWord" Type="nvarchar" MaxLength="50" />
+          <Property Name="FID" Type="int" />
+          <Property Name="SubType" Type="int" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sex" Type="bit" />
+          <Property Name="Head" Type="bit" />
+          <Property Name="Points" Type="int" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="IDCardNo" Type="varchar" MaxLength="50" />
+          <Property Name="IDCardPic" Type="varchar" MaxLength="300" />
+          <Property Name="DrivingLicensePic" Type="varchar" MaxLength="300" />
+          <Property Name="AllowTime" Type="datetime" />
+          <Property Name="RegTime" Type="datetime" />
+          <Property Name="IsDriver" Type="bit" />
+          <Property Name="IsDel" Type="bit" />
+        </EntityType>
+        <Association Name="FK_Good_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Good" Type="Self.Good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Good">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lorry_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lorry" Type="Self.Lorry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lorry">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trend_Lorry">
+          <End Role="Lorry" Type="Self.Lorry" Multiplicity="0..1" />
+          <End Role="Trend" Type="Self.Trend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lorry">
+              <PropertyRef Name="No" />
+            </Principal>
+            <Dependent Role="Trend">
+              <PropertyRef Name="LorryNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="JWLModelStoreContainer">
+          <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Good" EntityType="Self.Good" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lorry" EntityType="Self.Lorry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Trend" EntityType="Self.Trend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Good_User" Association="Self.FK_Good_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Good" EntitySet="Good" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lorry_User" Association="Self.FK_Lorry_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Lorry" EntitySet="Lorry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trend_Lorry" Association="Self.FK_Trend_Lorry">
+            <End Role="Lorry" EntitySet="Lorry" />
+            <End Role="Trend" EntitySet="Trend" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JWLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Config">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Good">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="Size" Type="Double" />
+          <Property Name="SrcAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="SrcAddressDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DestAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DestAddressDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SendTime" Type="DateTime" Precision="3" />
+          <Property Name="ReachTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDel" Type="Boolean" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Good_User" FromRole="Good" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Lorry">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LorryType" Type="Int32" />
+          <Property Name="LorryLength" Type="Double" />
+          <Property Name="CarryWeight" Type="Double" />
+          <Property Name="DriverId" Type="Int32" />
+          <Property Name="Pic" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Lorry_User" FromRole="Lorry" ToRole="User" />
+          <NavigationProperty Name="Trends" Relationship="Self.FK_Trend_Lorry" FromRole="Lorry" ToRole="Trend" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Html" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="Int32" />
+          <Property Name="Pics" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ComeFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ComeFromUrl" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Tags" Type="Int32" />
+          <Property Name="Applaud" Type="Int32" />
+          <Property Name="Tread" Type="Int32" />
+          <Property Name="Click" Type="Int32" />
+          <Property Name="Type" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDel" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Trend">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LorryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SrcAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DestAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartureTime" Type="DateTime" Precision="3" />
+          <Property Name="ReachTime" Type="DateTime" Precision="3" />
+          <Property Name="GoBackTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="CurrentCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Lorry" Relationship="Self.FK_Trend_Lorry" FromRole="Trend" ToRole="Lorry" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CodeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KeyWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FID" Type="Int32" />
+          <Property Name="SubType" Type="Int32" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" />
+          <Property Name="Head" Type="Boolean" />
+          <Property Name="Points" Type="Int32" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IDCardPic" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DrivingLicensePic" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="AllowTime" Type="DateTime" Precision="3" />
+          <Property Name="RegTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDriver" Type="Boolean" />
+          <Property Name="IsDel" Type="Boolean" />
+          <NavigationProperty Name="Goods" Relationship="Self.FK_Good_User" FromRole="User" ToRole="Good" />
+          <NavigationProperty Name="Lorries" Relationship="Self.FK_Lorry_User" FromRole="User" ToRole="Lorry" />
+        </EntityType>
+        <Association Name="FK_Good_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Good" Type="Self.Good" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Good">
+              <PropertyRef Name="UID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lorry_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lorry" Type="Self.Lorry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Lorry">
+              <PropertyRef Name="DriverId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trend_Lorry">
+          <End Role="Lorry" Type="Self.Lorry" Multiplicity="0..1" />
+          <End Role="Trend" Type="Self.Trend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lorry">
+              <PropertyRef Name="No" />
+            </Principal>
+            <Dependent Role="Trend">
+              <PropertyRef Name="LorryNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Configs" EntityType="Self.Config" />
+          <EntitySet Name="Goods" EntityType="Self.Good" />
+          <EntitySet Name="Lorries" EntityType="Self.Lorry" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Trends" EntityType="Self.Trend" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Good_User" Association="Self.FK_Good_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Good" EntitySet="Goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lorry_User" Association="Self.FK_Lorry_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Lorry" EntitySet="Lorries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trend_Lorry" Association="Self.FK_Trend_Lorry">
+            <End Role="Lorry" EntitySet="Lorries" />
+            <End Role="Trend" EntitySet="Trends" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JWLModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Configs">
+            <EntityTypeMapping TypeName="JWLModel.Config">
+              <MappingFragment StoreEntitySet="Config">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goods">
+            <EntityTypeMapping TypeName="JWLModel.Good">
+              <MappingFragment StoreEntitySet="Good">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SrcAddress" ColumnName="SrcAddress" />
+                <ScalarProperty Name="SrcAddressDetail" ColumnName="SrcAddressDetail" />
+                <ScalarProperty Name="DestAddress" ColumnName="DestAddress" />
+                <ScalarProperty Name="DestAddressDetail" ColumnName="DestAddressDetail" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="ReachTime" ColumnName="ReachTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lorries">
+            <EntityTypeMapping TypeName="JWLModel.Lorry">
+              <MappingFragment StoreEntitySet="Lorry">
+                <ScalarProperty Name="No" ColumnName="No" />
+                <ScalarProperty Name="LorryType" ColumnName="LorryType" />
+                <ScalarProperty Name="LorryLength" ColumnName="LorryLength" />
+                <ScalarProperty Name="CarryWeight" ColumnName="CarryWeight" />
+                <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="JWLModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Summary" ColumnName="Summary" />
+                <ScalarProperty Name="Html" ColumnName="Html" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Pics" ColumnName="Pics" />
+                <ScalarProperty Name="ComeFrom" ColumnName="ComeFrom" />
+                <ScalarProperty Name="ComeFromUrl" ColumnName="ComeFromUrl" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Applaud" ColumnName="Applaud" />
+                <ScalarProperty Name="Tread" ColumnName="Tread" />
+                <ScalarProperty Name="Click" ColumnName="Click" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="JWLModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Trends">
+            <EntityTypeMapping TypeName="JWLModel.Trend">
+              <MappingFragment StoreEntitySet="Trend">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LorryNo" ColumnName="LorryNo" />
+                <ScalarProperty Name="SrcAddress" ColumnName="SrcAddress" />
+                <ScalarProperty Name="DestAddress" ColumnName="DestAddress" />
+                <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+                <ScalarProperty Name="ReachTime" ColumnName="ReachTime" />
+                <ScalarProperty Name="GoBackTime" ColumnName="GoBackTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CurrentCity" ColumnName="CurrentCity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="JWLModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CodeName" ColumnName="CodeName" />
+                <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
+                <ScalarProperty Name="FID" ColumnName="FID" />
+                <ScalarProperty Name="SubType" ColumnName="SubType" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="JWLModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Head" ColumnName="Head" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IDCardNo" ColumnName="IDCardNo" />
+                <ScalarProperty Name="IDCardPic" ColumnName="IDCardPic" />
+                <ScalarProperty Name="DrivingLicensePic" ColumnName="DrivingLicensePic" />
+                <ScalarProperty Name="AllowTime" ColumnName="AllowTime" />
+                <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+                <ScalarProperty Name="IsDriver" ColumnName="IsDriver" />
+                <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

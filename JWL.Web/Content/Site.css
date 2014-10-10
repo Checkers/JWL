@@ -1,0 +1,408 @@
+﻿body {
+    font-family: "Ubuntu", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #232323;
+    background-color: #fff;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-nav.navbar-right-jerry:last-child {
+    margin-right: 0;
+}
+
+.bottom {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.middle {
+    overflow: hidden;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.truck_main {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.c_truck_left {
+    width: 300px;
+    height: 800px;
+    /*border: 1px solid #7D797D;*/
+    float: left;
+    overflow: hidden;
+}
+
+.c_truck_right {
+    position: absolute;
+    left: 310px;
+    right: 0;
+    /*border: 1px solid #7D797D;*/
+    float: right;
+    overflow: hidden;
+}
+
+.search_truck {
+    border-bottom: 1px solid #7D797D;
+    display: none;
+}
+
+.input_search_j {
+    width: 130px;
+    display: inline;
+}
+
+.img_row {
+    text-align: center;
+    width: 130px;
+}
+
+    .img_row a {
+        display: block;
+        margin-top: 10px;
+    }
+
+.h_j_title .btn_pub,.h_j_title .btn_pub:hover {
+    float: right;
+    background-color: #7D797D;
+    border-color: #7D797D;
+    border-radius: 0;
+    display:inline-block;
+    background-color:#428BCA;
+    border:none;
+    font-weight:bolder;
+    padding:0;
+}
+
+.c_truck_stitle {
+    height: 35px;
+    line-height: 35px;
+    background-color: #7D797D;
+}
+
+.c_truck_stitle_t {
+    font-weight: bold;
+    color: #FFF;
+    margin-left: 8px;
+}
+
+.table_pubtruck {
+    margin-bottom: 0;
+}
+
+.my_publish_item {
+    padding-bottom: 10px;
+    padding-top: 5px;
+    border-bottom: 1px dashed #7D797D;
+    cursor: pointer;
+}
+
+    .my_publish_item:hover {
+        background-color: #ddd;
+    }
+
+    .my_publish_item p {
+        margin: 0;
+    }
+
+.home_layout {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 750px;
+}
+
+.c_index_left {
+    float: left;
+    width: 69%;
+    height: 800px;
+    /*border: 1px solid #7D797D;*/
+}
+
+.c_index_right {
+    float: right;
+    width: 30%;
+    /*border: 1px solid #7D797D;*/
+}
+
+.c_i_l_top {
+    height: 130px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.c_i_l_top2 {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.clit2 {
+    height: 260px;
+    width: 49%;
+    /*border: 1px solid #7D797D;*/
+}
+
+
+
+.c_i_l_top3 {
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.clit2_1 {
+    float: left;
+}
+
+.clit2_2 {
+    float: right;
+    /*border: 1px solid #7D797D;*/
+}
+
+.c_i_r_top {
+    margin-bottom: 15px;
+    /*border: 1px solid #7D797D;*/
+}
+
+.c_i_r_top2 {
+    /*height: 130px;*/
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    letter-spacing: 1pt;
+}
+
+.c_i_r_topxbtn, .c_i_r_topxbtn:hover {
+    width: 49%;
+    height: 35px;
+    background-color: #7D797D;
+    border-radius: 5px;
+    display: inline-block;
+    line-height: 35px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.c_i_r_top3 {
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    letter-spacing: 1pt;
+}
+
+.table_Jerry > tbody > tr > td {
+    border: none;
+}
+
+    .table_Jerry > tbody > tr > td .btn_jerry {
+        margin: 20px 45px 0 45px;
+    }
+
+.home_layout_headad {
+    height: 100px;
+    background-color: #ccb4b4;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.input_login_j {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    margin: 3px 0 10px 0;
+}
+
+
+.h_j_title {
+    font-weight: bold;
+    color: #FFF;
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    border: 1px solid #ddd;
+    z-index: 2;
+    background-color: #428bca;
+    border-color: #428bca;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.c_i_r_top_content {
+    padding: 10px 50px;
+    border: 1px solid #ddd;
+}
+
+.home_layout_forgotpwd {
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.c_i_r_top_content2 {
+    padding: 10px;
+    height:200px;
+}
+
+.resp_img {
+    height: 100%;
+    width: 100%;
+}
+
+.c_i_r_top_content3 {
+    padding: 10px;
+}
+
+.c_i_l_top_2s {
+    height: 105px;
+}
+
+.c_i_l_top_2s_img {
+    width: 100%;
+}
+
+.c_truck_left_content {
+    padding: 5px;
+    border:1px solid #ddd;
+}
+
+.bottom {
+    background-color: #222222;
+    height: 130px;
+    clear: both;
+    padding: 30px;
+    color: #fff;
+}
+
+    .bottom > div > a {
+        color: #fff;
+    }
+
+.c_i_r_top_content_login_info {
+    color: #ff0000;
+    margin-top: 10px;
+    display: none;
+}
+
+.usercenter {
+}
+
+.uc_left {
+    width: 200px;
+    float: left;
+}
+
+.uc_right {
+    width: 780px;
+    float: right;
+    /*border: 1px solid #7D797D;*/
+}
+
+.uc_main {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.nav_usercenterlist {
+    font-weight: bold;
+}
+
+.uc_mian_toppic {
+    height:90px;
+    margin-bottom:20px;
+}
+
+.btn-uc-reglogin {
+    width:100%;
+    height:50px;
+    line-height:50px;
+    font-size:20px;
+    text-align:center;
+    cursor:pointer;
+    text-decoration:none;
+    display:block;
+    background-color:#eeeeee;
+    color:#147a48;
+}
+
+.btn-uc-reglogin:hover {
+    background-color:#428BCA;
+    text-decoration:none;
+    color:#FFF;
+}
+
+.clit2_3 {
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+.register_from {
+    margin-top:10px;
+    margin-left:30px;
+    padding-bottom:100px;
+}
+
+.register_from input,.register_from select {
+    width:300px;
+}
+
+.register_from_login {
+    margin-top:100px;
+    padding-left:200px;
+    padding-bottom:100px;
+}
+
+.hj_title_usercenterlist {
+    margin-bottom:10px;
+}
+
+.nav-pills > li.active_userlist > a, .nav-pills > li.active_userlist > a:hover, .nav-pills > li.active_userlist > a:focus {
+    background-color:#bcd7c5;
+}
+
+.uc_index {
+    margin-top:20px;
+    overflow:hidden;
+}
+
+.uc_index_l {
+    float:left;
+}
+
+.uc_index_r {
+    float:right;
+    text-align:left;
+    width:600px;
+}
+
+.uc_index_r p {
+   width:290px;
+   display:inline-block;
+}
+
+
+.uc_index_head {
+    height:150px;
+    width:150px;   
+}
+
+.nextcol {
+    width:40px;
+    height:1px;
+    display:inline-block;
+}
+
+.uc_index2 {
+    margin-top:20px;
+}

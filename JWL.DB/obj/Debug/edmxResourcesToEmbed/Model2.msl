@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JWLModel1StoreContainer" CdmEntityContainer="JWLEntities1">
+    <EntitySetMapping Name="Configs">
+      <EntityTypeMapping TypeName="JWLModel1.Config">
+        <MappingFragment StoreEntitySet="Config">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Goods">
+      <EntityTypeMapping TypeName="JWLModel1.Good">
+        <MappingFragment StoreEntitySet="Good">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="SrcAddress" ColumnName="SrcAddress" />
+          <ScalarProperty Name="SrcAddressDetail" ColumnName="SrcAddressDetail" />
+          <ScalarProperty Name="DestAddress" ColumnName="DestAddress" />
+          <ScalarProperty Name="DestAddressDetail" ColumnName="DestAddressDetail" />
+          <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+          <ScalarProperty Name="ReachTime" ColumnName="ReachTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lorries">
+      <EntityTypeMapping TypeName="JWLModel1.Lorry">
+        <MappingFragment StoreEntitySet="Lorry">
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="LorryType" ColumnName="LorryType" />
+          <ScalarProperty Name="LorryLength" ColumnName="LorryLength" />
+          <ScalarProperty Name="CarryWeight" ColumnName="CarryWeight" />
+          <ScalarProperty Name="DriverId" ColumnName="DriverId" />
+          <ScalarProperty Name="Pic" ColumnName="Pic" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="News">
+      <EntityTypeMapping TypeName="JWLModel1.News">
+        <MappingFragment StoreEntitySet="News">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Html" ColumnName="Html" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Pics" ColumnName="Pics" />
+          <ScalarProperty Name="ComeFrom" ColumnName="ComeFrom" />
+          <ScalarProperty Name="ComeFromUrl" ColumnName="ComeFromUrl" />
+          <ScalarProperty Name="Tags" ColumnName="Tags" />
+          <ScalarProperty Name="Applaud" ColumnName="Applaud" />
+          <ScalarProperty Name="Tread" ColumnName="Tread" />
+          <ScalarProperty Name="Click" ColumnName="Click" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trends">
+      <EntityTypeMapping TypeName="JWLModel1.Trend">
+        <MappingFragment StoreEntitySet="Trend">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LorryNo" ColumnName="LorryNo" />
+          <ScalarProperty Name="SrcAddress" ColumnName="SrcAddress" />
+          <ScalarProperty Name="DestAddress" ColumnName="DestAddress" />
+          <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+          <ScalarProperty Name="ReachTime" ColumnName="ReachTime" />
+          <ScalarProperty Name="GoBackTime" ColumnName="GoBackTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CurrentCity" ColumnName="CurrentCity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="JWLModel1.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CodeName" ColumnName="CodeName" />
+          <ScalarProperty Name="KeyWord" ColumnName="KeyWord" />
+          <ScalarProperty Name="FID" ColumnName="FID" />
+          <ScalarProperty Name="SubType" ColumnName="SubType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="JWLModel1.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="NickName" ColumnName="NickName" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Head" ColumnName="Head" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IDCardNo" ColumnName="IDCardNo" />
+          <ScalarProperty Name="IDCardPic" ColumnName="IDCardPic" />
+          <ScalarProperty Name="DrivingLicensePic" ColumnName="DrivingLicensePic" />
+          <ScalarProperty Name="AllowTime" ColumnName="AllowTime" />
+          <ScalarProperty Name="RegTime" ColumnName="RegTime" />
+          <ScalarProperty Name="IsDriver" ColumnName="IsDriver" />
+          <ScalarProperty Name="IsDel" ColumnName="IsDel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

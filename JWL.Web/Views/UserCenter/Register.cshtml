@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "注册";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="uc_main">
+    @Html.Action("UCTopList", "Templete")
+    <div class="uc_right">
+        <div class="clit2 clit2_3">
+            <p class="h_j_title"><i class="glyphicon glyphicon-bullhorn"></i> 用户注册</p>
+        </div>
+        <div role="form" class="register_from">
+            <div class="form-group">
+                <label for="exampleInputEmail1">真实姓名</label>
+                <input type="email" class="form-control" id="UserName" placeholder="输入您的真实姓名">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">手机号码</label>
+                <input type="email" class="form-control" id="PhoneNo" placeholder="输入您的手机号码">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">身份证号码</label>
+                <input type="email" class="form-control" id="IDCardNo" placeholder="输入您的身份证号码">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">登录密码</label>
+                <input type="password" class="form-control" id="Password" placeholder="输入您的登录密码">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">再次输入登录密码</label>
+                <input type="password" class="form-control" id="CPassword" placeholder="再次输入您的登录密码">
+            </div>
+            <div class="form-group">
+                <select id="IsDriver" class="form-control">
+                    <option value="0">我是货主</option>
+                    <option value="1">我是司机</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit" class="btn btn-primary">立刻注册</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('#submit').click(function () {
+        var UserName = $.trim($('#UserName').val());
+        var PhoneNo = $.trim($('#PhoneNo').val());
+        var IDCardNo = $.trim($('#IDCardNo').val());
+        var Password = $.trim($('#Password').val());
+        var IsDriver = $.trim($('#IsDriver').val());
+
+        $.ajax({
+            url:"/UserCenter/Register",
+            type: "post",
+            data: { "UserName": UserName, "PhoneNo": PhoneNo, "IDCardNo": IDCardNo, "Password": Password, "IsDriver": IsDriver },
+            success: function (data) {
+                window.location.href="/UserCenter/UpadateUserInfo?t=1"
+            }
+        });
+    });
+</script>

@@ -1,0 +1,184 @@
+﻿@model List<JWL.DB.Good>
+@{
+    ViewBag.Title = "货车查找";
+}
+@*<link href="~/Scripts/datepicker/datepicker.css" rel="stylesheet" />
+    <script src="~/Scripts/datepicker/bootstrap-datepicker.js" charset="gbk"></script>*@
+<link href="~/Scripts/datepicker/bootstrap-datetimepicker.css" rel="stylesheet" />
+<script src="~/Scripts/datepicker/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/datepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<link href="~/Scripts/city/city.css" rel="stylesheet" />
+<script src="~/Scripts/city/city.js"></script>
+<div class="truck_main">
+    <div class="c_truck_left">
+        <div class="h_j_title">
+            <span class="c_truck_stitle_t">我发布的货源</span>
+            <a class="btn btn-primary btn_pub">+发布货源信息</a>
+        </div>
+        <div class="c_truck_left_content">
+            <div class="search_truck">
+                <table class="table table_Jerry">
+                    <tr>
+                        <td>
+                            出发地：<input type="text" id="SrcAddress" class="form-control input-sm input_search_j" placeholder="选择出发地…" readonly />
+                        </td>
+                        <td>
+                            发往地：<input type="text" id="DestAddress" class="form-control input-sm input_search_j" placeholder="选择发往地…" readonly />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            体 积：
+                            <input type="text" id="Size" class="form-control input-sm input_search_j" placeholder="输入体积…" />
+                            @*<select>
+                                <option selected="selected">全部</option>
+                                <option>平板车</option>
+                                <option>低栏车</option>
+                                <option>高栏车</option>
+                                <option>半封闭车</option>
+                                <option>厢式车</option>
+                                <option>集装箱车</option>
+                                <option>冷藏车</option>
+                                <option>自卸车</option>
+                                <option>危货车</option>
+                                <option>特种车</option>
+                                </select>*@
+                        </td>
+                        <td>
+                            吨 位：
+                            <input type="text" id="Weight" class="form-control input-sm input_search_j" placeholder="输入吨位…" />
+                            @*<select class="">
+                                    <option selected="selected">全部</option>
+                                    <option>10吨以下</option>
+                                    <option>10-15吨</option>
+                                    <option>16-20吨</option>
+                                    <option>21-25吨</option>
+                                    <option>26-30吨</option>
+                                    <option>30吨以上</option>
+                                </select>*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            发货时间：
+                            <input type="text" id="SendTime" class="form-control input-sm input_search_j" readonly data-date-format="yyyy-mm-dd" placeholder="输入发货时间…" />
+
+                            @*<select class="">
+                                    <option selected="selected">全部</option>
+                                    <option>6米以下</option>
+                                    <option>6-10米</option>
+                                    <option>11-17.5米</option>
+                                    <option>17.5米以上</option>
+                                </select>*@
+                        </td>
+                        <td><a id="pub_submit" class="btn btn-primary btn-sm btn_jerry">发布货源</a></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="content_list">
+                @foreach (var good in Model)
+                {
+                    <div class="my_publish_item" gid="@good.ID">
+                        <p><strong>@good.Title</strong></p>
+                        <p>@good.SrcAddress -> @good.DestAddress 时间：@string.Format("{0:yyyy-MM-dd}", good.SendTime)</p>
+                        <p>备注：如果有需要可直接与我联系</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="c_truck_right">
+        <div class="h_j_title">
+            <span class="c_truck_stitle_t">为您查找到以下车源</span>
+        </div>
+        <div class="c_truck_left_content">
+            <div class="content_list">
+                <div class="content_item">
+                    <table class="table table-condensed">
+                        <tr>
+                            <td class="img_row" rowspan="3">
+                                <a class="c_item"><img src="http://static.156580.com/images/ph/default_car_pic.gif" height="70" width="100" /></a>
+                            </td>
+                            <td>车牌号：冀B0621</td>
+                            <td>车型：低栏车</td>
+                            <td>司机：王先生</td>
+                        </tr>
+                        <tr>
+                            <td>车长：13米</td>
+                            <td>载重：50吨</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">当前位置：常州</td>
+                            <td>更新时间：2014-7-12</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<span id="hideBotton"></span>*@
+<script type="text/javascript">
+    $('.navbar-nav li').eq(1).addClass("active").siblings().removeClass("active");
+
+    $('.btn_pub').toggle(function () {
+        $('.btn_pub').text("发布货源信息");
+        $('.search_truck').slideDown();
+    }, function () {
+        $('.btn_pub').text("+发布货源信息");
+        $('.search_truck').slideUp();
+
+    });
+
+
+    $("#SendTime").datetimepicker({ format: 'yyyy-mm-dd hh:ii' });
+    var Src = new Vcity.CitySelector({ input: 'SrcAddress' });
+    var Dest = new Vcity.CitySelector({ input: 'DestAddress' });
+
+    $('#pub_submit').click(function () {
+        var SrcAddress = $.trim($('#SrcAddress').val());
+        var DestAddress = $.trim($('#DestAddress').val());
+        var SendTime = $.trim($('#SendTime').val());
+        var Weight = $.trim($('#Weight').val());
+        var Size = $.trim($('#Size').val());
+        $.ajax({
+            url: "/Home/AddGood",
+            type: "post",
+            data: { "SrcAddress": SrcAddress, "DestAddress": DestAddress, "Weight": Weight, "SendTime": SendTime, "Size": Size },
+            success: function (data) {
+                alert(data.res);
+            }
+        });
+    });
+
+    $('.my_publish_item').bind("click", function () {
+        var id = $(this).attr("gid");
+        $.ajax({
+            url: "/Home/QueryTrend",
+            type: "post",
+            data: { "Gid": id},
+            success: function (data) {
+                //alert(data.res);
+                var objs = eval(data.res);
+
+                if (objs.length == 0) {
+                    $('.content_item').html("<p>没有找到相关的货车,请稍后再查寻...</p>");
+                } else {
+                    $('.content_item').html("");
+                    for (var i = 0; i < objs.length; i++)
+                    {
+                        var html = '<table class="table table-condensed"><tr><td class="img_row" rowspan="3"><a class="c_item">'+
+                            '<img src="http://static.156580.com/images/ph/default_car_pic.gif" height="70" width="100" /></a>'+
+                            '</td><td>车牌号：' + objs[i].LorryNo + '</td><td>车型：' + objs[i].LorryTypeName + '</td><td>司机：' + objs[i].UserName + '</td></tr><tr><td>车长：' + objs[i].LorryLength + '米</td>' +
+                        '<td>载重：' + objs[i].CarryWeight + '吨</td><td></td></tr><tr><td colspan="2">当前位置：' + objs[i].CurrentLocation + '</td><td>更新时间：' + objs[i].UpdateTime + '</td></tr></table>';
+                        $('.content_item').append(html);
+                    }
+                }
+
+                
+            }
+        });
+    });
+
+</script>

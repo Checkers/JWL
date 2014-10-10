@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - 极物流</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</head>
+<body>
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">JWL</a>
+        </div>
+        <div class="navbar-collapse collapse navbar-responsive-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">首页</a></li>
+                <li><a href="/Home/Trucks">发布</a></li>
+                <li><a href="#">货源查询</a></li>
+                <li><a href="#">配货查询</a></li>
+                <li><a href="#">申请资金</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">帮助中心<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">注册授权</a></li>
+                        <li><a href="#">推广策略</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">成功案例</a></li>
+                        <li><a href="#">关于我们</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-right-jerry">
+                @if (Session["UserName"] == null) { 
+                <li><a href="/UserCenter/Register">注册</a></li>
+                <li><a href="/UserCenter/Login">登录</a></li>
+                }
+                else 
+                {
+                <li><a href="/UserCenter">您好，@Session["UserName"]</a></li>
+                <li><a href="/UserCenter/UserExit">退出</a></li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="middle">
+        @RenderBody()
+    </div>
+    <div class="bottom">
+        <div class="contact">
+            <a href="#" rel="nofollow" target="_blank">关于易物流</a>|
+            <a href="http://www.156580.com/about/pht.html" target="_blank">产品与服务</a>|
+            <a href="http://www.156580.com/kf/" target="_blank">客服中心</a>|
+            <a href="http://www.156580.com/mobile/" target="_blank">客户端下载</a>|
+            <a href="http://zs.156580.com/" target="_blank">招商加盟</a>|
+            <a href="http://www.156580.com/renzheng/" rel="nofollow" target="_blank">实名认证</a>|
+            <a href="http://www.156580.com/chengxin/" rel="nofollow" target="_blank">诚信保障</a>|
+            <a href=" http://www.156580.com/about/contactus.html" rel="nofollow" target="_blank">联系易物流</a>|
+            <a href="http://www.156580.com/about/link.html" target="_blank">友情链接</a>|
+            <a href="http://www.156580.com/about/duty.html" target="_blank">服务条款</a>|
+            <a href="http://www.156580.com/about/sitemap.html" target="_blank">网站地图</a>
+        </div>
+        <div class="copyright">客服热线：4001-156580&nbsp;会员服务：020-87556656 87553036&nbsp;&nbsp;广告服务：020-87556656 87553036&nbsp;</div>
+        <div class="copyright">©2009-2014 极物流网(www.156580.com) All Rights Reserved <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">粤ICP备12024336号-1</a></div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            if ($('#hideBotton').size() == 1) {
+                $('.bottom').remove();
+            }
+        });
+
+    </script>
+</body>
+</html>

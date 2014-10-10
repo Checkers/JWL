@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JWLModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Good">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="80" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Size" Type="float" />
+    <Property Name="SrcAddress" Type="nvarchar" MaxLength="15" />
+    <Property Name="SrcAddressDetail" Type="nvarchar" MaxLength="100" />
+    <Property Name="DestAddress" Type="nvarchar" MaxLength="15" />
+    <Property Name="DestAddressDetail" Type="nvarchar" MaxLength="100" />
+    <Property Name="SendTime" Type="datetime" />
+    <Property Name="ReachTime" Type="datetime" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="Lorry">
+    <Key>
+      <PropertyRef Name="No" />
+    </Key>
+    <Property Name="No" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LorryType" Type="int" />
+    <Property Name="LorryLength" Type="float" />
+    <Property Name="CarryWeight" Type="float" />
+    <Property Name="DriverId" Type="int" />
+    <Property Name="Pic" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Summary" Type="nvarchar" MaxLength="500" />
+    <Property Name="Html" Type="text" />
+    <Property Name="Author" Type="int" />
+    <Property Name="Pics" Type="nvarchar" MaxLength="300" />
+    <Property Name="ComeFrom" Type="nvarchar" MaxLength="50" />
+    <Property Name="ComeFromUrl" Type="varchar" MaxLength="300" />
+    <Property Name="Tags" Type="int" />
+    <Property Name="Applaud" Type="int" />
+    <Property Name="Tread" Type="int" />
+    <Property Name="Click" Type="int" />
+    <Property Name="Type" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityType Name="Trend">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LorryNo" Type="varchar" MaxLength="50" />
+    <Property Name="SrcAddress" Type="varchar" MaxLength="50" />
+    <Property Name="DestAddress" Type="varchar" MaxLength="50" />
+    <Property Name="DepartureTime" Type="datetime" />
+    <Property Name="ReachTime" Type="datetime" />
+    <Property Name="GoBackTime" Type="datetime" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="CurrentCity" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="CodeName" Type="varchar" MaxLength="50" />
+    <Property Name="KeyWord" Type="nvarchar" MaxLength="50" />
+    <Property Name="FID" Type="int" />
+    <Property Name="SubType" Type="int" />
+    <Property Name="CreateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sex" Type="bit" />
+    <Property Name="Head" Type="bit" />
+    <Property Name="Points" Type="int" />
+    <Property Name="PhoneNo" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="IDCardNo" Type="varchar" MaxLength="50" />
+    <Property Name="IDCardPic" Type="varchar" MaxLength="300" />
+    <Property Name="DrivingLicensePic" Type="varchar" MaxLength="300" />
+    <Property Name="AllowTime" Type="datetime" />
+    <Property Name="RegTime" Type="datetime" />
+    <Property Name="IsDriver" Type="bit" />
+    <Property Name="IsDel" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="JWLModel1StoreContainer">
+    <EntitySet Name="Config" EntityType="Self.Config" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Good" EntityType="Self.Good" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lorry" EntityType="Self.Lorry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trend" EntityType="Self.Trend" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

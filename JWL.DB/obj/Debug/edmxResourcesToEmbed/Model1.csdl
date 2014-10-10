@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JWLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Config">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Good">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Size" Type="Double" />
+    <Property Name="SrcAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="SrcAddressDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DestAddress" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="DestAddressDetail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SendTime" Type="DateTime" Precision="3" />
+    <Property Name="ReachTime" Type="DateTime" Precision="3" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Good_User" FromRole="Good" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Lorry">
+    <Key>
+      <PropertyRef Name="No" />
+    </Key>
+    <Property Name="No" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LorryType" Type="Int32" />
+    <Property Name="LorryLength" Type="Double" />
+    <Property Name="CarryWeight" Type="Double" />
+    <Property Name="DriverId" Type="Int32" />
+    <Property Name="Pic" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Lorry_User" FromRole="Lorry" ToRole="User" />
+    <NavigationProperty Name="Trends" Relationship="Self.FK_Trend_Lorry" FromRole="Lorry" ToRole="Trend" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Html" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Author" Type="Int32" />
+    <Property Name="Pics" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="ComeFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ComeFromUrl" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Tags" Type="Int32" />
+    <Property Name="Applaud" Type="Int32" />
+    <Property Name="Tread" Type="Int32" />
+    <Property Name="Click" Type="Int32" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDel" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Trend">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LorryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SrcAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DestAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DepartureTime" Type="DateTime" Precision="3" />
+    <Property Name="ReachTime" Type="DateTime" Precision="3" />
+    <Property Name="GoBackTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="CurrentCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lorry" Relationship="Self.FK_Trend_Lorry" FromRole="Trend" ToRole="Lorry" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CodeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="KeyWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FID" Type="Int32" />
+    <Property Name="SubType" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sex" Type="Boolean" />
+    <Property Name="Head" Type="Boolean" />
+    <Property Name="Points" Type="Int32" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCardNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDCardPic" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="DrivingLicensePic" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="AllowTime" Type="DateTime" Precision="3" />
+    <Property Name="RegTime" Type="DateTime" Precision="3" />
+    <Property Name="IsDriver" Type="Boolean" />
+    <Property Name="IsDel" Type="Boolean" />
+    <NavigationProperty Name="Goods" Relationship="Self.FK_Good_User" FromRole="User" ToRole="Good" />
+    <NavigationProperty Name="Lorries" Relationship="Self.FK_Lorry_User" FromRole="User" ToRole="Lorry" />
+  </EntityType>
+  <Association Name="FK_Good_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Good" Type="Self.Good" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Good">
+        <PropertyRef Name="UID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lorry_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Lorry" Type="Self.Lorry" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Lorry">
+        <PropertyRef Name="DriverId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trend_Lorry">
+    <End Role="Lorry" Type="Self.Lorry" Multiplicity="0..1" />
+    <End Role="Trend" Type="Self.Trend" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lorry">
+        <PropertyRef Name="No" />
+      </Principal>
+      <Dependent Role="Trend">
+        <PropertyRef Name="LorryNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Configs" EntityType="Self.Config" />
+    <EntitySet Name="Goods" EntityType="Self.Good" />
+    <EntitySet Name="Lorries" EntityType="Self.Lorry" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Trends" EntityType="Self.Trend" />
+    <EntitySet Name="Types" EntityType="Self.Type" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Good_User" Association="Self.FK_Good_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Good" EntitySet="Goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lorry_User" Association="Self.FK_Lorry_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Lorry" EntitySet="Lorries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trend_Lorry" Association="Self.FK_Trend_Lorry">
+      <End Role="Lorry" EntitySet="Lorries" />
+      <End Role="Trend" EntitySet="Trends" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

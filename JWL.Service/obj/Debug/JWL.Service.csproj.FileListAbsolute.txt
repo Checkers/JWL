@@ -1,0 +1,17 @@
+D:\Projects\JWL\JWL.Service\bin\Debug\JWL.Service.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\JWL.Service.pdb
+D:\Projects\JWL\JWL.Service\bin\Debug\EntityFramework.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\JWL.DB.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\JWL.DB.pdb
+D:\Projects\JWL\JWL.Service\bin\Debug\EntityFramework.xml
+D:\Projects\JWL\JWL.Service\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\JWL\JWL.Service\bin\Debug\zh-Hans\EntityFramework.resources.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Projects\JWL\JWL.Service\obj\Debug\JWL.Service.csprojResolveAssemblyReference.cache
+D:\Projects\JWL\JWL.Service\obj\Debug\JWL.Service.dll
+D:\Projects\JWL\JWL.Service\obj\Debug\JWL.Service.pdb
+D:\Projects\JWL\JWL.Service\bin\Debug\JLib.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\JLib.pdb
+D:\Projects\JWL\JWL.Service\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\JWL\JWL.Service\bin\Debug\Newtonsoft.Json.xml

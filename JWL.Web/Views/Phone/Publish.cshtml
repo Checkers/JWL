@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Publish";
+    Layout = "~/Views/Shared/PhoneLayout.cshtml";
+}
+
+<div class="form_div">
+    <p>出发地点</p>
+    <input type="text" id="SrcAddress" value="阿克苏" class="input-lg input-sm" placeholder="输入您的出发地点" />
+    <p>到达地点</p>
+    <input type="text" id="DestAddress" value="南京" placeholder="输入您的目的地" />
+    <p>出发时间</p>
+    <input type="text" id="DepartureTime" value="2014-10-23" placeholder="输入您的出发时间" />
+    <p>到达时间</p>
+    <input type="text" id="ReachTime" value="2014-10-23" placeholder="输入您的到达时间" />
+    <p>返回时间</p>
+    <input type="text" id="GoBackTime" value="2014-10-23" placeholder="输入您的返回时间" />
+    <p>当前城市</p>
+    <input type="text" id="CurrentCity" value="常州" placeholder="输入您当前城市" />
+    <p></p>
+    <a id="submit" class="am-btn am-btn-secondary am-btn-group-justify">提交动向</a>
+</div>
+<script type="text/javascript">
+    $('#submit').click(function () {
+        var SrcAddress = $.trim($('#SrcAddress').val());
+        var DestAddress = $.trim($('#DestAddress').val());
+        var DepartureTime = $.trim($('#DepartureTime').val());
+        var ReachTime = $.trim($('#ReachTime').val());
+        var GoBackTime = $.trim($('#GoBackTime').val());
+        var CurrentCity = $.trim($('#CurrentCity').val());
+
+        $.ajax({
+            url: "/Phone/Publish",
+            type: "post",
+            data: {
+                "SrcAddress": SrcAddress,
+                "DestAddress": DestAddress,
+                "DepartureTime": DepartureTime,
+                "ReachTime": ReachTime,
+                "GoBackTime": GoBackTime,
+                "CurrentCity": CurrentCity
+            },
+            success: function (data) {
+                window.location.href = "/Phone/Query"
+            }
+        });
+    });
+</script>

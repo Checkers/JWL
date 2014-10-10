@@ -1,0 +1,77 @@
+﻿<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/css/amui.all.min.css" rel="stylesheet" />
+    <link href="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/css/app.css" rel="stylesheet" />
+</head>
+<body>
+    <!--[if lte IE 9]>
+    <p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，暂不支持本站。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
+      以获得更好的体验！</p>
+    <![endif]-->
+    <script src="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/js/zepto.min.js"></script>
+    <script src="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/js/amui.js"></script>
+    <script src="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/js/handlebars.min.js"></script>
+    <script src="~/Content/AmazeUI-1.0.0-beta1-20140919/assets/js/amui.widget.helper.js"></script>
+    <header data-am-widget="header" class="am-header am-header-default" data-am-sticky="{top:0}">
+        <div class="am-header-left am-header-nav">
+            <a href="#left-link" class="">
+                <i class="am-header-icon am-icon-home"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">
+            <a href="#title-link">极物流</a>
+        </h1>
+        <div class="am-header-right am-header-nav">
+            <a href="#right-link" class="">
+                <i class="am-header-icon am-icon-bars"></i>
+            </a>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <div data-am-widget="navbar" class="am-navbar am-cf am-navbar-default "
+         id="">
+        <ul class="am-navbar-nav am-cf sm-block-grid-4">
+            <li>
+                <a href="/Phone/Index">
+                    <img src="http://amazeui.b0.upaiyun.com/assets/i/cpts/navbar/Information.png"
+                         alt="首页" />
+                    <span class="am-navbar-label">首页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Phone/Publish">
+                    <img src="http://amazeui.b0.upaiyun.com/assets/i/cpts/navbar/phone.png"
+                         alt="发布" />
+                    <span class="am-navbar-label">发布</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Phone/Query">
+                    <img src="http://amazeui.b0.upaiyun.com/assets/i/cpts/navbar/share.png"
+                         alt="查询" />
+                    <span class="am-navbar-label">查询</span>
+                </a>
+            </li>
+            <li>
+                <a href="/Phone/Login">
+                    <img src="http://amazeui.b0.upaiyun.com/assets/i/cpts/navbar/map.png"
+                         alt="我的" />
+                    <span class="am-navbar-label">我的</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html>
